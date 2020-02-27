@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="pwh_javaee201706061714:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/pwh_javaee201706061714_war</output-path>
+    <root id="archive" name="pwh_javaee201706061714_war.war">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="pwh_javaee201706061714" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="pwh_javaee201706061714/web/Web" />
+    </root>
+  </artifact>
+</component>

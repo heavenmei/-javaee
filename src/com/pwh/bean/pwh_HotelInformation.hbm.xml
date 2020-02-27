@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.pwh.bean.pwh_HotelInformation" table="pwh_HotelInformation">
+		<id name="hotelId">
+			<column name="hotelId" />
+			<generator class="increment" />
+		</id>
+		<property name="hotelname">
+			<column name="hotelname" />
+		</property>
+		<property name="area">
+			<column name="area" />
+		</property>
+		<property name="place">
+			<column name="place" />
+		</property>
+		<property name="phone">
+			<column name="phone" />
+		</property>
+		<property name="owner">
+			<column name="username" />
+		</property>
+		<set name="room" inverse="true" lazy="true">
+			<key>
+				<column name="hotelId"></column>
+			</key>
+			<one-to-many class="com.pwh.bean.pwh_Room" />
+		</set>
+	</class>
+</hibernate-mapping>

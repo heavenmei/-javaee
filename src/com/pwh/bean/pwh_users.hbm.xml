@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+	<class name="com.pwh.bean.pwh_users" table="pwh_users">
+		<id name="username">
+			<column name="username" />
+			<generator class="assigned" />
+		</id>
+		<property name="password">
+			<column name="password" />
+		</property>
+		<property name="sex">
+			<column name="sex" />
+		</property>
+		<property name="phone">
+			<column name="phone" />
+		</property>
+		<property name="useridentity">
+			<column name="useridentity" />
+		</property>
+		<property name="money">
+			<column name="money" />
+		</property>
+		<set name="order" inverse="true" lazy="true">
+			<key>
+				<column name="username"></column>
+			</key>
+			<one-to-many class="com.pwh.bean.pwh_Order1" />
+		</set>
+		<set name="comment" inverse="true" lazy="true">
+			<key>
+				<column name="username"></column>
+			</key>
+			<one-to-many class="com.pwh.bean.pwh_Comment" />
+		</set>
+	</class>
+</hibernate-mapping>

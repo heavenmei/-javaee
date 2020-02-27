@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context ="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd" >
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/pwh_hotel1?serverTimezone=UTC"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="123456"></property>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+            </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/pwh/bean/pwh_users.hbm.xml</value>
+                <value>com/pwh/bean/pwh_Comment.hbm.xml</value>
+                <value>com/pwh/bean/pwh_HotelInformation.hbm.xml</value>
+                <value>com/pwh/bean/pwh_Order1.hbm.xml</value>
+                <value>com/pwh/bean/pwh_Room.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="baseDao" class="com.pwh.dao.BaseHibernateDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="userDao" class="com.pwh.dao.userDao" parent="baseDao">
+    </bean>
+    <bean id="hotelDao" class="com.pwh.dao.hotelDao" parent="baseDao">
+    </bean>
+    <bean id="roomDao" class="com.pwh.dao.roomDao" parent="baseDao">
+    </bean>
+    <bean id="orderDao" class="com.pwh.dao.orderDao" parent="baseDao">
+    </bean>
+    <bean id="comDao" class="com.pwh.dao.comDao" parent="baseDao">
+    </bean>
+    <bean id="rgService" class="com.pwh.service.registerService">
+        <property name="hd" ref="hotelDao"></property>
+        <property name="ud" ref="userDao"></property>
+        <property name="rd" ref="roomDao"></property>
+        <property name="od" ref="orderDao"></property>
+        <property name="cd" ref="comDao"></property>
+    </bean>
+    <bean id="useroperator" class="com.pwh.service.userService">
+        <property name="ud" ref="userDao"></property>
+        <property name="hd" ref="hotelDao"></property>
+        <property name="rd" ref="roomDao"></property>
+        <property name="od" ref="orderDao"></property>
+        <property name="cd" ref="comDao"></property>
+    </bean>
+    <bean id="userAction" class="com.pwh.action.userAction" scope="prototype">
+        <property name="rg" ref="rgService"></property>
+        <property name="uo" ref="useroperator"></property>
+    </bean>
+    <bean id="orderAction" class="com.pwh.action.orderAction" scope="prototype">
+        <property name="rg" ref="rgService"></property>
+        <property name="uo" ref="useroperator"></property>
+    </bean>
+</beans>

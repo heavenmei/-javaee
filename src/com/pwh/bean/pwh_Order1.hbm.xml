@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.pwh.bean.pwh_Order1" table="pwh_Order1">
+		<id name="oid">
+			<column name="oId" />
+			<generator class="uuid" />
+		</id>
+		<property name="username">
+			<column name="username" />
+		</property>
+		<property name="roomId">
+			<column name="roomId" />
+		</property>
+		<property name="hotelname">
+			<column name="hotelname" />
+		</property>
+		<property name="uname">
+			<column name="uname" />
+		</property>
+		<property name="roomstyle">
+			<column name="roomstyle" />
+		</property>
+		<property name="statu">
+			<column name="statu" />
+		</property>
+		<property name="ordernumber">
+			<column name="ordernumber" />
+		</property>
+		<property name="checkinTime">
+			<column name="checkinTime" />
+		</property>
+		<property name="checkoutTime">
+			<column name="checkoutTime" />
+		</property>
+		<property name="orderTime">
+			<column name="orderTime" />
+		</property>
+	</class>
+</hibernate-mapping>

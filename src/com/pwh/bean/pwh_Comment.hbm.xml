@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.pwh.bean.pwh_Comment" table="pwh_Comment">
+		<id name="cid">
+			<column name="cId" />
+			<generator class="uuid" />
+		</id>
+		<property name="hotelId">
+			<column name="hotelId" />
+		</property>
+		<property name="com">
+			<column name="com" />
+		</property>
+		<property name="username">
+			<column name="username" />
+		</property>
+	</class>
+</hibernate-mapping>

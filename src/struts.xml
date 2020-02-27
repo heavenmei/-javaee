@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="strutsBean" extends="struts-default" namespace="/">
+        <action name="divide" class="userAction" method="divide">
+            <result name="three">/search.jsp</result>
+            <result name="two">/operator.jsp</result>
+            <result name="one">/operator2.jsp</result>
+            <result name="login">/register.jsp</result>
+        </action>
+        <action name="login" class="userAction" method="login">
+            <result name="success" type="chain">divide</result>
+            <result name="fail">/register.jsp</result>
+        </action>
+        <action name="hotelregister" class="userAction" method="registerforHotel">
+            <result name="success">/login.jsp</result>
+            <result name="fail">/register.jsp</result>
+        </action>
+        <action name="useregister" class="userAction" method="registerforUser">
+            <result name="success">/login.jsp</result>
+            <result name="fail">/register.jsp</result>
+        </action>
+        <action name="search" class="userAction" method="search">
+            <result name="success">/selectResult.jsp</result>
+            <result name="fail">/search.jsp</result>
+        </action>
+        <action name="allhotel" class="userAction" method="findAllHotel">
+            <result name="success">/AllHotel.jsp</result>
+            <result name="fail">/addHotel.jsp</result>
+        </action>
+        <action name="addHotel" class="userAction" method="addHotel">
+            <result name="success" >/MyHotel.jsp</result>
+            <result name="fail">/search.jsp</result>
+        </action>
+        <action name="selectDel" class="userAction" method="selectDel">
+            <result name="success">/delHotel.jsp</result>
+            <result name="fail">/delHotel.jsp</result>
+        </action>
+        <action name="delhotel" class="userAction" method="delHotel">
+            <result name="success" type="chain">selectDel</result>
+            <result name="fail" type="chain">selectDel</result>
+        </action>
+        <action name="AllUser" class="userAction" method="AllUser">
+            <result name="success">/AllUser.jsp</result>
+            <result name="fail">/operator2.jsp</result>
+        </action>
+        <action name="updateUser" class="userAction" method="updateUser">
+            <result name="success" type="chain">AllUser</result>
+            <result name="fail">/updateUser.jsp</result>
+        </action>
+        <action name="MyHotel" class="userAction" method="MyHotel">
+            <result name="success">/MyHotel.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="RoomHid" class="userAction" method="roomHid">
+            <result name="success">/addRoom.jsp</result>
+        </action>
+        <action name="addRoom" class="userAction" method="addRoom">
+            <result name="success" type="chain">MyHotel</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="hotelDetail" class="userAction" method="detail">
+            <result name="success">/HotelDetail.jsp</result>
+        </action>
+        <action name="deleteUser" class="userAction" method="deleteUser">
+            <result name="success" type="chain">AllUser</result>
+            <result name="fail" type="chain">AllUser</result>
+        </action>
+        <action name="delRoom" class="userAction" method="delRoom">
+            <result name="success" type="chain">hotelDetail</result>
+            <result name="fail" type="chain">hotelDetail</result>
+        </action>
+        <action name="orderRid" class="orderAction" method="orderRid">
+            <result name="success">/addOrder.jsp</result>
+        </action>
+        <action name="show" class="orderAction" method="showOrder">
+            <result name="success">/myOrder.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="showB" class="orderAction" method="showforB">
+            <result name="success">/Sorder.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="showBH" class="orderAction" method="showforB">
+            <result name="success">/Shistory.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="hist" class="orderAction" method="showOrder">
+            <result name="success">/history.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="addOrder" class="orderAction" method="addOrder">
+            <result name="success" type="chain">show</result>
+            <result name="fail" type="chain">show</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="confirm" class="orderAction" method="confirm">
+            <result name="success" type="chain">showBH</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="cancel" class="orderAction" method="cancel">
+            <result name="success" type="chain">hist</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <action name="commentHId" class="orderAction" method="commentHID">
+            <result name="success">/comment.jsp</result>
+        </action>
+        <action name="comment" class="orderAction" method="release">
+            <result name="success">/search.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+    </package>
+</struts>

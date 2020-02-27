@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.pwh.bean.pwh_Room" table="pwh_Room" >
+		<id name="roomId">
+			<column name="roomId" />
+			<generator class="increment" />
+		</id>
+		<property name="hotelId">
+			<column name="hotelId" />
+		</property>
+		<property name="hotelname">
+			<column name="hotelname" />
+		</property>
+		<property name="username">
+			<column name="username" />
+		</property>
+		<property name="roomstyle">
+			<column name="roomstyle" />
+		</property>
+		<property name="breakfast">
+			<column name="breakfast" />
+		</property>
+		<property name="unit">
+			<column name="unit" />
+		</property>
+		<property name="amount">
+			<column name="amount" />
+		</property>
+		<property name="discount">
+			<column name="discount" />
+		</property>
+	</class>
+</hibernate-mapping>
